@@ -1,0 +1,9 @@
+pull_request_rules:
+  - name: vm2 trusted primary approval
+    conditions:
+      - author = livastic-vm2-primary-20260911
+      - base = main
+    actions:
+      review:
+        type: APPROVE
+        message: VM2-TRUSTED-REVIEW-BASELINE
