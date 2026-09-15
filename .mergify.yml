@@ -1,9 +1,13 @@
-pull_request_rules:
-  - name: vm2 trusted primary approval
-    conditions:
-      - author = livastic-vm2-primary-20260911
-      - base = main
-    actions:
-      review:
-        type: APPROVE
-        message: VM2-TRUSTED-REVIEW-BASELINE
+queue_rules:
+  - name: vm2-head-rename-freshness
+    batch_size: 1
+    max_checks_retries: 0
+    queue_conditions:
+      - base = vm2-headrename-base-0915
+      - title = VM2_HEAD_BRANCH_RENAME
+      - head = vm2-headrename-old-0915
+    merge_conditions:
+      - base = vm2-headrename-base-0915
+      - title = VM2_HEAD_BRANCH_RENAME
+      - check-success = vm2-headrename-hold
+pull_request_rules: []
